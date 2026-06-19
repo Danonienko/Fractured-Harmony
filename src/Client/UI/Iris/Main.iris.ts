@@ -1,13 +1,13 @@
 import Iris from "@rbxts/iris";
 import { type IrisController } from "Client/Controllers/IrisController";
-import TestIris from "./Components/Test.iris";
+import CharacterIris from "./Components/Character/Character.iris";
 
 type Props = {
 	irisController: IrisController;
-	isOpened?: Iris.State<boolean>;
 };
 
-export default function MainIris({ isOpened = Iris.State(true), irisController }: Props): void {
+export default function MainIris({ irisController }: Props): void {
+	const isOpened = Iris.State(true);
 	const currentComponent = Iris.State<(() => void) | undefined>(undefined);
 
 	Iris.Window(["Fractured Harmony – Debug Panel v1.0"], {
@@ -25,14 +25,14 @@ export default function MainIris({ isOpened = Iris.State(true), irisController }
 
 			Iris.Menu(["Components"]);
 			{
-				const menuItemTest = Iris.MenuItem(["Test"]);
-				if (menuItemTest.clicked()) currentComponent.set(TestIris);
+				const menuItemCharacter = Iris.MenuItem(["Character"]);
+				if (menuItemCharacter.clicked()) currentComponent.set(CharacterIris);
 			}
 			Iris.End();
 		}
 		Iris.End();
 
-		if (currentComponent.value) currentComponent.value();
+		if (currentComponent.get()) currentComponent.get()!();
 		else {
 			Iris.Text(["Hello world!"]);
 
