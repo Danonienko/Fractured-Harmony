@@ -6,6 +6,9 @@ export default class StaminaComponent extends CharacterComponent {
 	public readonly StaminaChanged: Signal<(oldStamina: number, newStamina: number) => void> = this.Trove.add(
 		new Signal()
 	);
+	public readonly MaxStaminaChanged: Signal<(oldMaxStamina: number, newMaxStamina: number) => void> = this.Trove.add(
+		new Signal()
+	);
 	public readonly StaminaAdded: Signal<(oldStamina: number, newStamina: number) => void> = this.Trove.add(
 		new Signal()
 	);
@@ -37,7 +40,10 @@ export default class StaminaComponent extends CharacterComponent {
 	public SetMaxStamina(value: number): void {
 		if (value < 0) return this._logger.Warn("Parameter 'Value' cannot be less than 0");
 
+		const oldMaxStamina = this._maxStamina;
 		this._maxStamina = value;
+		this.MaxStaminaChanged.Fire(oldMaxStamina, this._maxStamina);
+
 		if (this._currentStamina > this._maxStamina) this.SetStamina(value);
 	}
 
