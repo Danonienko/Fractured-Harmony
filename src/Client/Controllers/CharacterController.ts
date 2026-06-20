@@ -14,8 +14,8 @@ class CharacterController {
 	private _character?: Character;
 
 	public constructor() {
-		Players.LocalPlayer.CharacterAdded.Connect((character) => this._handleCharacterAdded(character));
-		Players.LocalPlayer.CharacterRemoving.Connect(() => this._handleCharacterRemoving());
+		Players.LocalPlayer?.CharacterAdded.Connect((character) => this._handleCharacterAdded(character));
+		Players.LocalPlayer?.CharacterRemoving.Connect(() => this._handleCharacterRemoving());
 	}
 
 	public GetCharacter(): Character | undefined {
