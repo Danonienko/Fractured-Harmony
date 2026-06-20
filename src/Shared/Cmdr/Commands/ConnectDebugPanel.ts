@@ -7,7 +7,7 @@ export = {
 		"[DEV] Connects a developer debug panel which grants user the power to control all the systems in the game",
 	Args: [],
 	ClientRun: () => {
-		const [, result] = Signals.Cmdr.ConnectDebugPanel.Invoke();
+		const [, result] = Signals.Client.Cmdr.ConnectDebugPanel.Invoke();
 
 		return result;
 	}
