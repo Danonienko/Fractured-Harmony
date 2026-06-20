@@ -3,6 +3,8 @@ import { Players } from "@rbxts/services";
 import Signal from "@rbxts/signal";
 import Character from "Client/Classes/Character";
 
+debug.setmemorycategory("FRAMEWORK/CharacterController");
+
 class CharacterController {
 	public readonly CharacterCreated: Signal<(character: Character) => void> = new Signal();
 	public readonly CharacterDestroying: Signal<(character: Character) => void> = new Signal();
