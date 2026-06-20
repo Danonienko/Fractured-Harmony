@@ -3,7 +3,7 @@ import Log, { Logger } from "@rbxts/log";
 import MainIris from "Client/UI/Iris/Main.iris";
 import Signals from "Shared/Signals";
 
-const connectDebugPanelFunction = Signals.Cmdr.ConnectDebugPanel;
+const connectDebugPanelFunction = Signals.Client.Cmdr.ConnectDebugPanel;
 
 class IrisController {
 	private readonly _logger: Logger = Log.ForContext(IrisController);
